@@ -11,6 +11,10 @@
 		css = localStorage.getItem('css') || '';
 		js = localStorage.getItem('js') || '';
 
+		const style = document.createElement('style');
+		style.appendChild(document.createTextNode(css));
+		document.head.appendChild(style);
+
 		onMount(() => {
 			eval(js);
 		});
@@ -18,5 +22,5 @@
 </script>
 
 {#if html !== undefined}
-	<div>{html}</div>
+	{@html html}
 {/if}
